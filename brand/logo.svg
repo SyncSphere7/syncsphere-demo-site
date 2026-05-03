@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Main gradient: deep navy to purple -->
+    <linearGradient id="sphereGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#061b31;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#533afd;stop-opacity:1" />
+    </linearGradient>
+    <!-- Accent gradient: purple to magenta -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#533afd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f96bee;stop-opacity:1" />
+    </linearGradient>
+    <!-- Orbital ring gradient -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#533afd;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#f96bee;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#533afd;stop-opacity:0.8" />
+    </linearGradient>
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Inner shadow for depth -->
+    <filter id="innerShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feComponentTransfer in="SourceAlpha">
+        <feFuncA type="table" tableValues="1 0"/>
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="4"/>
+      <feOffset dx="2" dy="4" result="offsetblur"/>
+      <feFlood flood-color="#061b31" flood-opacity="0.3" result="color"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feComposite in2="SourceAlpha" operator="in"/>
+      <feMerge>
+        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle (the "sphere") -->
+  <circle cx="200" cy="200" r="160" fill="url(#sphereGrad)" filter="url(#innerShadow)"/>
+  
+  <!-- Highlight arc on sphere -->
+  <path d="M 100 140 Q 200 60 300 140" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/>
+  
+  <!-- Orbital ring 1 (main, tilted) -->
+  <ellipse cx="200" cy="200" rx="155" ry="55" fill="none" stroke="url(#ringGrad)" stroke-width="2.5" transform="rotate(-20, 200, 200)" filter="url(#glow)"/>
+  
+  <!-- Orbital ring 2 (secondary, opposite tilt) -->
+  <ellipse cx="200" cy="200" rx="140" ry="45" fill="none" stroke="rgba(83,58,253,0.3)" stroke-width="1.5" transform="rotate(25, 200, 200)"/>
+  
+  <!-- Sync nodes on the main ring -->
+  <!-- Node 1: top-right -->
+  <circle cx="310" cy="145" r="8" fill="#533afd" filter="url(#glow)"/>
+  <circle cx="310" cy="145" r="4" fill="#ffffff"/>
+  
+  <!-- Node 2: bottom-left -->
+  <circle cx="90" cy="255" r="8" fill="#f96bee" filter="url(#glow)"/>
+  <circle cx="90" cy="255" r="4" fill="#ffffff"/>
+  
+  <!-- Node 3: right -->
+  <circle cx="340" cy="210" r="6" fill="#533afd" filter="url(#glow)"/>
+  <circle cx="340" cy="210" r="3" fill="#ffffff"/>
+  
+  <!-- Node 4: left -->
+  <circle cx="60" cy="190" r="6" fill="#f96bee" filter="url(#glow)"/>
+  <circle cx="60" cy="190" r="3" fill="#ffffff"/>
+  
+  <!-- Connection lines between nodes (the "sync" lines) -->
+  <line x1="310" y1="145" x2="340" y2="210" stroke="rgba(83,58,253,0.4)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="340" y1="210" x2="90" y2="255" stroke="rgba(83,58,253,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="90" y1="255" x2="60" y2="190" stroke="rgba(249,107,238,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="60" y1="190" x2="310" y2="145" stroke="rgba(249,107,238,0.4)" stroke-width="1" stroke-dasharray="4,4"/>
+  
+  <!-- Center "S" lettermark -->
+  <text x="200" y="215" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="300" fill="#ffffff" text-anchor="middle" letter-spacing="-2" opacity="0.95">S</text>
+</svg>

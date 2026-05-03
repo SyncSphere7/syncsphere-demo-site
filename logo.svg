@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#533afd"/>
+      <stop offset="100%" style="stop-color:#f96bee"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4434d4"/>
+      <stop offset="100%" style="stop-color:#ea2261"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer hexagon -->
+  <path d="M256 32L448 144V368L256 480L64 368V144L256 32Z" fill="url(#g1)" opacity="0.1"/>
+  <!-- Inner hexagon -->
+  <path d="M256 80L400 168V344L256 432L112 344V168L256 80Z" fill="url(#g1)" opacity="0.2"/>
+  <!-- Center S shape -->
+  <path d="M196 176h48c24 0 44 8 56 20s18 28 18 44c0 20-10 36-26 46l-34 22c-12 8-18 18-18 30v8h92v32H232v-16c0-18 8-34 22-46l38-24c14-8 22-20 22-34 0-10-4-18-12-24s-18-10-30-10h-48c-14 0-26 6-34 16l-16 24h-4l20-48c10-22 28-38 62-38z" fill="white"/>
+  <!-- Decorative dots -->
+  <circle cx="320" cy="344" r="8" fill="url(#g2)" opacity="0.6"/>
+  <circle cx="352" cy="320" r="5" fill="url(#g2)" opacity="0.4"/>
+</svg>

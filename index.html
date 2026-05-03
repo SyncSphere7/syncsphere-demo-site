@@ -1,330 +1,1520 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SyncSphere — AI-Powered Business Services</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            purple: { 50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd', 400: '#a78bfa', 500: '#8b5cf6', 600: '#533afd', 700: '#4434d4', 800: '#2e2b8c', 900: '#1c1e54' },
-            navy: { 900: '#061b31', 975: '#0d253d' },
-            ruby: '#ea2261',
-            magenta: '#f96bee',
-          },
-          fontFamily: { sans: ['-apple-system', 'system-ui', 'sans-serif'] }
-        }
-      }
-    }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncSphere — Intelligence that evolves with your business</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #ffffff; --fg: #061b31; --muted: #64748d; --border: #e5edf5; --accent: #533afd; --surface: #ffffff; }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
-    h1, h2, h3 { letter-spacing: -0.02em; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-weight: 500; font-size: 15px; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
-    .btn-primary { background: #533afd; color: white; }
-    .btn-primary:hover { background: #4434d4; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(83,58,253,0.3); }
-    .btn-secondary { background: transparent; color: #061b31; border: 1px solid #e5edf5; }
-    .btn-secondary:hover { border-color: #533afd; color: #533afd; }
-    .btn-white { background: white; color: #533afd; }
-    .card { background: white; border: 1px solid #e5edf5; border-radius: 14px; padding: 32px; transition: all 0.3s; }
-    .card:hover { box-shadow: 0 8px 30px rgba(50,50,93,0.08); transform: translateY(-2px); }
-    .card.featured { border-color: #533afd; position: relative; }
-    .card.featured::before { content: 'Recommended'; position: absolute; top: -12px; left: 24px; background: #533afd; color: white; padding: 3px 12px; border-radius: 999px; font-size: 11px; font-weight: 600; }
-    .gradient-text { background: linear-gradient(135deg, #533afd, #f96bee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-bg { background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); }
-    .section-alt { background: #f8f9fc; }
-    .faq-item { border-bottom: 1px solid #e5edf5; }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-q { cursor: pointer; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-weight: 500; }
-    .faq-a { padding: 0 0 20px; color: #64748d; display: none; }
-    .faq-a.open { display: block; }
-    @media (max-width: 800px) {
-      .wrap { padding: 0 20px; }
-      .hero h1 { font-size: 36px !important; }
-      .grid-3 { grid-template-columns: 1fr !important; }
-      .grid-2 { grid-template-columns: 1fr !important; }
+    /* ========================================
+       SYNCSPHERE DESIGN SYSTEM v1.0
+       Premium SaaS — Stripe × Framer fusion
+       ======================================== */
+
+    :root {
+      /* Colors */
+      --purple: #533afd;
+      --purple-hover: #4434d4;
+      --purple-deep: #2e2b8c;
+      --purple-light: #b9b9f9;
+      --purple-mid: #665efd;
+      --navy: #061b31;
+      --dark-navy: #0d253d;
+      --brand-dark: #1c1e54;
+      --magenta: #f96bee;
+      --magenta-light: #ffd7ef;
+      --ruby: #ea2261;
+      --white: #ffffff;
+      --heading: #061b31;
+      --label: #273951;
+      --body: #64748d;
+      --border: #e5edf5;
+      --success: #15be53;
+      --success-text: #108c3d;
+
+      /* Shadows */
+      --shadow-ambient: 0px 3px 6px rgba(23,23,23,0.06);
+      --shadow-card: 0px 15px 35px rgba(23,23,23,0.08);
+      --shadow-elevated: 0px 30px 45px -30px rgba(50,50,93,0.25), 0px 18px 36px -18px rgba(0,0,0,0.1);
+      --shadow-deep: 0px 14px 21px -14px rgba(3,3,39,0.25), 0px 8px 17px -8px rgba(0,0,0,0.1);
+
+      /* Typography */
+      --font-primary: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Spacing */
+      --section-pad: 120px;
+      --container: 1080px;
+
+      /* Animation */
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --duration: 500ms;
+      --duration-slow: 800ms;
     }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .animate { animation: fadeInUp 0.6s ease-out forwards; }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
+
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      color: var(--body);
+      background: var(--white);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.5;
+      overflow-x: hidden;
+      font-feature-settings: "ss01";
+    }
+
+    /* ========================================
+       UTILITY
+       ======================================== */
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    /* ========================================
+       ANIMATED BACKGROUND — Aurora mesh
+       ======================================== */
+    .aurora-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .aurora-bg .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+
+    .aurora-bg .orb:nth-child(1) {
+      width: 600px; height: 600px;
+      background: var(--purple);
+      top: -200px; left: -100px;
+      animation-delay: 0s;
+    }
+
+    .aurora-bg .orb:nth-child(2) {
+      width: 400px; height: 400px;
+      background: var(--magenta);
+      top: 30%; right: -100px;
+      animation-delay: -7s;
+      animation-duration: 25s;
+    }
+
+    .aurora-bg .orb:nth-child(3) {
+      width: 500px; height: 500px;
+      background: var(--purple-light);
+      bottom: -150px; left: 30%;
+      animation-delay: -14s;
+      animation-duration: 22s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(50px, -30px) scale(1.05); }
+      50% { transform: translate(-20px, 50px) scale(0.95); }
+      75% { transform: translate(30px, 20px) scale(1.02); }
+    }
+
+    /* ========================================
+       SCROLL-TRIGGERED ANIMATIONS
+       ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease);
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease);
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease-spring);
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .stagger > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger > *:nth-child(2) { transition-delay: 100ms; }
+    .stagger > *:nth-child(3) { transition-delay: 200ms; }
+    .stagger > *:nth-child(4) { transition-delay: 300ms; }
+    .stagger > *:nth-child(5) { transition-delay: 400ms; }
+    .stagger > *:nth-child(6) { transition-delay: 500ms; }
+
+    /* ========================================
+       NAVIGATION
+       ======================================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      transition: all var(--duration) var(--ease);
+    }
+
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { width: 32px; height: 32px; }
+
+    .nav-logo span {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--heading);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--heading);
+      text-decoration: none;
+      letter-spacing: -0.15px;
+      transition: color var(--duration) var(--ease);
+      font-feature-settings: "ss01";
+    }
+
+    .nav-links a:hover { color: var(--purple); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 20px;
+      background: var(--purple);
+      color: var(--white) !important;
+      border-radius: 4px;
+      font-size: 14px !important;
+      font-weight: 400;
+      transition: background var(--duration) var(--ease), transform var(--duration) var(--ease);
+    }
+
+    .nav-cta:hover {
+      background: var(--purple-hover);
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--heading); margin: 5px 0; transition: var(--duration); }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--section-pad) + 60px) 0 var(--section-pad);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(83, 58, 253, 0.08);
+      border: 1px solid rgba(83, 58, 253, 0.15);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--purple);
+      margin-bottom: 32px;
+      letter-spacing: -0.1px;
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 1.03;
+      letter-spacing: -1.4px;
+      color: var(--heading);
+      margin-bottom: 24px;
+      font-feature-settings: "ss01";
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--magenta) 50%, var(--ruby) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+    }
+
+    .hero p {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.50;
+      color: var(--body);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      font-feature-settings: "ss01";
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-family: var(--font-primary);
+      font-size: 16px;
+      font-weight: 400;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all var(--duration) var(--ease);
+      font-feature-settings: "ss01";
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(83, 58, 253, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--purple-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(83, 58, 253, 0.4);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--purple);
+      border: 1px solid var(--purple-light);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(83, 58, 253, 0.05);
+      transform: translateY(-2px);
+    }
+
+    /* Hero visual — 3D orbit */
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 60px auto 0;
+      perspective: 1000px;
+    }
+
+    .orbit-container {
+      position: relative;
+      width: 100%;
+      padding-top: 60%;
+      transform-style: preserve-3d;
+      animation: orbitRotate 30s linear infinite;
+    }
+
+    @keyframes orbitRotate {
+      0% { transform: rotateY(0deg) rotateX(10deg); }
+      100% { transform: rotateY(360deg) rotateX(10deg); }
+    }
+
+    .orbit-ring {
+      position: absolute;
+      top: 50%; left: 50%;
+      border-radius: 50%;
+      border: 1.5px solid;
+      transform-style: preserve-3d;
+    }
+
+    .orbit-ring:nth-child(1) {
+      width: 80%; height: 80%;
+      margin: -40% 0 0 -40%;
+      border-color: rgba(83, 58, 253, 0.3);
+      transform: rotateX(75deg);
+    }
+
+    .orbit-ring:nth-child(2) {
+      width: 65%; height: 65%;
+      margin: -32.5% 0 0 -32.5%;
+      border-color: rgba(249, 107, 238, 0.25);
+      transform: rotateX(75deg) rotateZ(60deg);
+    }
+
+    .orbit-ring:nth-child(3) {
+      width: 50%; height: 50%;
+      margin: -25% 0 0 -25%;
+      border-color: rgba(83, 58, 253, 0.2);
+      transform: rotateX(75deg) rotateZ(120deg);
+    }
+
+    .orbit-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 60px; height: 60px;
+      margin: -30px 0 0 -30px;
+      background: linear-gradient(135deg, var(--purple), var(--magenta));
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(83, 58, 253, 0.4), 0 0 80px rgba(249, 107, 238, 0.2);
+      animation: centerPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes centerPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(83, 58, 253, 0.4), 0 0 80px rgba(249, 107, 238, 0.2); }
+      50% { box-shadow: 0 0 60px rgba(83, 58, 253, 0.6), 0 0 120px rgba(249, 107, 238, 0.3); }
+    }
+
+    .orbit-node {
+      position: absolute;
+      width: 12px; height: 12px;
+      background: var(--purple);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(83, 58, 253, 0.5);
+    }
+
+    /* ========================================
+       LOGO CLOUD
+       ======================================== */
+    .logo-cloud {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .logo-cloud p {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--body);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 32px;
+    }
+
+    .logo-cloud .logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      opacity: 0.4;
+    }
+
+    .logo-cloud .logo-item {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--heading);
+      letter-spacing: -0.5px;
+    }
+
+    /* ========================================
+       FEATURES
+       ======================================== */
+    .features {
+      padding: var(--section-pad) 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 64px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+      font-size: 40px;
+      font-weight: 300;
+      line-height: 1.10;
+      letter-spacing: -0.8px;
+      color: var(--heading);
+      margin-bottom: 16px;
+      font-feature-settings: "ss01";
+    }
+
+    .section-header p {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.50;
+      color: var(--body);
+      font-feature-settings: "ss01";
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      padding: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all var(--duration) var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--purple), var(--magenta));
+      opacity: 0;
+      transition: opacity var(--duration) var(--ease);
+    }
+
+    .feature-card:hover {
+      border-color: var(--purple-light);
+      box-shadow: var(--shadow-elevated);
+      transform: translateY(-4px);
+    }
+
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-icon {
+      width: 48px; height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(83, 58, 253, 0.08);
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .feature-card h3 {
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1.10;
+      letter-spacing: -0.22px;
+      color: var(--heading);
+      margin-bottom: 12px;
+      font-feature-settings: "ss01";
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.50;
+      color: var(--body);
+      font-feature-settings: "ss01";
+    }
+
+    /* ========================================
+       DARK SECTION — How it works
+       ======================================== */
+    .how-it-works {
+      padding: var(--section-pad) 0;
+      background: var(--brand-dark);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(83, 58, 253, 0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 50%, rgba(249, 107, 238, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .how-it-works .section-label { color: var(--purple-light); }
+    .how-it-works .section-header h2 { color: var(--white); }
+    .how-it-works .section-header p { color: rgba(255,255,255,0.6); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(83, 58, 253, 0.4), rgba(249, 107, 238, 0.4), transparent);
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 64px; height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      background: rgba(83, 58, 253, 0.15);
+      border: 1px solid rgba(83, 58, 253, 0.3);
+      border-radius: 50%;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--purple-light);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .step p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.50;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ========================================
+       TESTIMONIALS
+       ======================================== */
+    .testimonials {
+      padding: var(--section-pad) 0;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      padding: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all var(--duration) var(--ease);
+    }
+
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-card);
+      transform: translateY(-2px);
+    }
+
+    .testimonial-stars {
+      color: #f59e0b;
+      font-size: 14px;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.60;
+      color: var(--heading);
+      margin-bottom: 20px;
+      font-style: normal;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .testimonial-author .name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--heading);
+    }
+
+    .testimonial-author .role {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--body);
+    }
+
+    /* ========================================
+       PRICING
+       ======================================== */
+    .pricing {
+      padding: var(--section-pad) 0;
+      background: linear-gradient(180deg, var(--white) 0%, rgba(83, 58, 253, 0.02) 100%);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .pricing-card {
+      padding: 40px 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+      transition: all var(--duration) var(--ease);
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--purple);
+      box-shadow: var(--shadow-elevated);
+      transform: scale(1.02);
+    }
+
+    .pricing-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 16px;
+      background: var(--purple);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 500;
+      border-radius: 9999px;
+      letter-spacing: 0.5px;
+    }
+
+    .pricing-card:hover {
+      box-shadow: var(--shadow-elevated);
+      transform: translateY(-4px);
+    }
+
+    .pricing-card.featured:hover { transform: scale(1.02) translateY(-4px); }
+
+    .pricing-card .plan-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .pricing-card .plan-price {
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--heading);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .pricing-card .plan-price span {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--body);
+    }
+
+    .pricing-card .plan-desc {
+      font-size: 14px;
+      color: var(--body);
+      margin-bottom: 32px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--body);
+      border-bottom: 1px solid rgba(229, 237, 245, 0.5);
+    }
+
+    .pricing-features li .check {
+      color: var(--success);
+      font-size: 16px;
+    }
+
+    .pricing-card .btn { width: 100%; justify-content: center; }
+
+    /* ========================================
+       CTA SECTION
+       ======================================== */
+    .cta-section {
+      padding: var(--section-pad) 0;
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 64px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--brand-dark) 100%);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(83, 58, 253, 0.2) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(249, 107, 238, 0.15) 0%, transparent 50%);
+      animation: ctaGlow 8s ease-in-out infinite;
+    }
+
+    @keyframes ctaGlow {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-5%, -5%); }
+    }
+
+    .cta-box > * { position: relative; z-index: 1; }
+
+    .cta-box h2 {
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.64px;
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+    }
+
+    .cta-box .btn-primary {
+      background: var(--white);
+      color: var(--purple);
+      box-shadow: none;
+    }
+
+    .cta-box .btn-primary:hover {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer {
+      padding: 64px 0 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: var(--body);
+      line-height: 1.60;
+      margin-top: 16px;
+      max-width: 280px;
+    }
+
+    .footer h4 {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--heading);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .footer-links { list-style: none; }
+
+    .footer-links li { margin-bottom: 10px; }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--body);
+      text-decoration: none;
+      transition: color var(--duration) var(--ease);
+    }
+
+    .footer-links a:hover { color: var(--purple); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: var(--body);
+    }
+
+    /* ========================================
+       PARALLAX & 3D UTILITIES
+       ======================================== */
+    .parallax-slow { transition: transform 0.1s linear; }
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .steps::before { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .pricing-card.featured { transform: none; }
+      .pricing-card.featured:hover { transform: translateY(-4px); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --section-pad: 80px; }
+
+      .hero h1 { font-size: 36px; letter-spacing: -0.8px; }
+      .hero p { font-size: 16px; }
+      .section-header h2 { font-size: 30px; }
+
+      .features-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 24px; }
+
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(16px);
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+        gap: 16px;
+      }
+
+      .cta-box { padding: 40px 24px; }
+      .cta-box h2 { font-size: 26px; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 30px; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <div class="wrap">
-    <header class="flex justify-between items-center py-5">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white font-bold text-sm">S</div>
-        <span class="font-semibold text-lg tracking-tight">SyncSphere</span>
-      </div>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#features" class="text-gray-600 hover:text-purple-600 transition">Features</a>
-        <a href="#pricing" class="text-gray-600 hover:text-purple-600 transition">Pricing</a>
-        <a href="#testimonials" class="text-gray-600 hover:text-purple-600 transition">Testimonials</a>
-        <a href="#faq" class="text-gray-600 hover:text-purple-600 transition">FAQ</a>
-        <a href="#contact" class="btn btn-primary text-sm !py-2 !px-4">Get Started</a>
-      </nav>
-    </header>
+  <!-- Aurora Background -->
+  <div class="aurora-bg">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero-bg py-20 md:py-28">
-    <div class="wrap text-center">
-      <div class="inline-flex items-center gap-2 bg-purple-50 border border-purple-200 rounded-full px-4 py-1.5 text-sm text-purple-700 mb-6 animate">
-        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-        Now accepting new clients
-      </div>
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight max-w-3xl mx-auto mb-6 animate delay-1" style="line-height: 1.05;">
-        AI-powered websites & automation for <span class="gradient-text font-medium">growing businesses</span>
-      </h1>
-      <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 animate delay-2">
-        We build premium websites, AI chatbots, and business automation — delivered by an autonomous AI agent team. No agencies. No delays. Just results.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center animate delay-3">
-        <a href="#pricing" class="btn btn-primary text-base !py-3 !px-8">View Pricing</a>
-        <a href="#features" class="btn btn-secondary text-base !py-3 !px-8">See What We Build</a>
-      </div>
-      <div class="mt-12 flex items-center justify-center gap-8 text-sm text-gray-400">
-        <span>✓ No contracts</span>
-        <span>✓ 48hr delivery</span>
-        <span>✓ Money-back guarantee</span>
-      </div>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg viewBox="0 0 400 400" width="32" height="32">
+          <defs>
+            <linearGradient id="navSphere" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#061b31"/>
+              <stop offset="100%" style="stop-color:#533afd"/>
+            </linearGradient>
+          </defs>
+          <circle cx="200" cy="200" r="160" fill="url(#navSphere)"/>
+          <ellipse cx="200" cy="200" rx="155" ry="55" fill="none" stroke="rgba(83,58,253,0.4)" stroke-width="2.5" transform="rotate(-20,200,200)"/>
+          <circle cx="310" cy="145" r="6" fill="#533afd"/>
+          <circle cx="310" cy="145" r="3" fill="#fff"/>
+          <circle cx="90" cy="255" r="6" fill="#f96bee"/>
+          <circle cx="90" cy="255" r="3" fill="#fff"/>
+          <text x="200" y="215" font-family="system-ui,sans-serif" font-size="72" font-weight="300" fill="#fff" text-anchor="middle" letter-spacing="-2">S</text>
+        </svg>
+        <span>SyncSphere</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#cta" class="nav-cta">Get Started</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </section>
+  </nav>
 
-  <!-- SOCIAL PROOF -->
-  <section class="py-12 border-y border-gray-100">
-    <div class="wrap text-center">
-      <p class="text-xs uppercase tracking-widest text-gray-400 mb-6">Trusted by businesses worldwide</p>
-      <div class="flex flex-wrap justify-center gap-8 md:gap-12 text-gray-300 font-semibold text-lg">
-        <span>Stripe</span><span>Linear</span><span>Vercel</span><span>Cursor</span><span>Notion</span><span>Supabase</span>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <span class="dot"></span>
+          Now in public beta — Free for early adopters
+        </div>
+        <h1 class="reveal">
+          AI agents that<br>
+          <span class="gradient-text">evolve with your business</span>
+        </h1>
+        <p class="reveal">
+          SyncSphere orchestrates autonomous AI agents that learn, adapt, and deliver — from customer support to full-stack development. One platform. Infinite capability.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#cta" class="btn btn-primary">
+            Start Free
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- FEATURES -->
-  <section id="features" class="py-20 md:py-28">
-    <div class="wrap">
-      <div class="text-center mb-16">
-        <p class="text-purple-600 font-medium text-sm uppercase tracking-wider mb-3">What We Build</p>
-        <h2 class="text-3xl md:text-4xl font-light tracking-tight">Everything your business needs online</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-3">
-        <div class="card">
-          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Premium Websites</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">$100k-agency quality sites built with modern design systems. Responsive, fast, and conversion-optimized.</p>
-        </div>
-        <div class="card">
-          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">AI Chatbots</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Intelligent customer support bots that handle inquiries 24/7. Trained on your business data and brand voice.</p>
-        </div>
-        <div class="card">
-          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Business Automation</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Streamline workflows with custom automation. From lead capture to invoicing — let AI handle the repetitive work.</p>
-        </div>
-        <div class="card">
-          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">SEO & Analytics</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Built-in search optimization and analytics dashboard. Track visitors, conversions, and ROI in real-time.</p>
-        </div>
-        <div class="card">
-          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Secure & Reliable</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Enterprise-grade security with SSL, backups, and 99.9% uptime. Your data is safe and always accessible.</p>
-        </div>
-        <div class="card">
-          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Dedicated Support</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Direct access to our team. Quick responses, iterative revisions, and ongoing maintenance included.</p>
+      <!-- 3D Orbit Visual -->
+      <div class="hero-visual reveal-scale">
+        <div class="orbit-container">
+          <div class="orbit-ring"></div>
+          <div class="orbit-ring"></div>
+          <div class="orbit-ring"></div>
+          <div class="orbit-center"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section id="pricing" class="py-20 md:py-28 section-alt">
-    <div class="wrap">
-      <div class="text-center mb-16">
-        <p class="text-purple-600 font-medium text-sm uppercase tracking-wider mb-3">Pricing</p>
-        <h2 class="text-3xl md:text-4xl font-light tracking-tight">Simple, transparent pricing</h2>
-        <p class="text-gray-500 mt-3">No hidden fees. Cancel anytime.</p>
+  <!-- Logo Cloud -->
+  <div class="logo-cloud">
+    <div class="container">
+      <p>Trusted by teams building the future</p>
+      <div class="logos">
+        <span class="logo-item">Vercel</span>
+        <span class="logo-item">Stripe</span>
+        <span class="logo-item">Linear</span>
+        <span class="logo-item">Notion</span>
+        <span class="logo-item">Raycast</span>
+        <span class="logo-item">Supabase</span>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-3 max-w-5xl mx-auto">
-        <!-- Starter -->
-        <div class="card">
-          <h3 class="text-lg font-semibold mb-1">Starter</h3>
-          <p class="text-gray-500 text-sm mb-4">Perfect for new businesses</p>
-          <div class="text-4xl font-light tracking-tight mb-1">$250</div>
-          <p class="text-gray-400 text-sm mb-6">one-time</p>
-          <ul class="text-sm text-gray-600 space-y-3 mb-8">
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 5-page responsive website</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Mobile-optimized design</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Basic SEO setup</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Contact form integration</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 2 revision rounds</li>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Features</span>
+        <h2>Everything you need to scale with AI</h2>
+        <p>From autonomous agents to real-time orchestration — SyncSphere gives your team superpowers.</p>
+      </div>
+      <div class="features-grid stagger">
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Multi-Agent Orchestration</h3>
+          <p>Deploy specialized AI agents that collaborate autonomously — each with its own role, memory, and skill set.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 11-6.219-8.56" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Self-Evolving Intelligence</h3>
+          <p>Agents learn from every interaction. Evolver-powered genes encode experience into reusable intelligence.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#533afd" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#533afd" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Real-Time Collaboration</h3>
+          <p>Watch agents work together in real-time. Shared context, parallel execution, instant handoffs.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Enterprise Security</h3>
+          <p>End-to-end encryption, audit trails, role-based access. Your data stays yours — always.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Lightning Fast</h3>
+          <p>Sub-second agent response times. Parallel execution across dozens of agents simultaneously.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Full-Stack Toolkit</h3>
+          <p>Code generation, design, marketing, finance — specialized agents for every function in your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">How it works</span>
+        <h2>Four steps to autonomous operations</h2>
+        <p>From setup to fully autonomous agents in minutes, not months.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-number">01</div>
+          <h3>Define Roles</h3>
+          <p>Create specialized agents with specific skills, personalities, and responsibilities.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:150ms">
+          <div class="step-number">02</div>
+          <h3>Connect Tools</h3>
+          <p>Integrate your existing stack — GitHub, Slack, Stripe, databases, APIs.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:300ms">
+          <div class="step-number">03</div>
+          <h3>Deploy & Monitor</h3>
+          <p>Launch agents into production. Watch them collaborate in real-time on the dashboard.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:450ms">
+          <div class="step-number">04</div>
+          <h3>Evolve & Scale</h3>
+          <p>Agents learn from outcomes. Genes encode experience. Performance improves automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Testimonials</span>
+        <h2>What teams are saying</h2>
+        <p>Early adopters are already seeing transformative results.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"SyncSphere replaced three separate tools and a part-time developer. Our support response time dropped from hours to seconds."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#533afd,#665efd)">JK</div>
+            <div>
+              <div class="name">Jessica Kim</div>
+              <div class="role">CTO, Flowstate</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:100ms">
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"The self-evolving agents are real. Our marketing agent went from generating basic copy to producing campaign-level strategy in two weeks."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#f96bee,#ea2261)">MR</div>
+            <div>
+              <div class="name">Marcus Rivera</div>
+              <div class="role">Founder, LaunchPad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:200ms">
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"We deployed a full-stack dev agent that ships production code daily. It's like having a senior engineer who never sleeps."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#061b31,#533afd)">AT</div>
+            <div>
+              <div class="name">Aisha Tamba</div>
+              <div class="role">VP Eng, Nexora</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Pricing</span>
+        <h2>Simple, transparent pricing</h2>
+        <p>Start free. Scale as you grow. No hidden fees.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">$0<span>/mo</span></div>
+          <div class="plan-desc">Perfect for exploring</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> 3 AI agents</li>
+            <li><span class="check">✓</span> 1,000 tasks/mo</li>
+            <li><span class="check">✓</span> Community support</li>
+            <li><span class="check">✓</span> Basic analytics</li>
           </ul>
-          <a href="#contact" class="btn btn-secondary w-full justify-center">Get Started</a>
+          <a href="#cta" class="btn btn-ghost">Get Started</a>
         </div>
-        <!-- Professional -->
-        <div class="card featured">
-          <h3 class="text-lg font-semibold mb-1">Professional</h3>
-          <p class="text-gray-500 text-sm mb-4">For growing businesses</p>
-          <div class="text-4xl font-light tracking-tight mb-1">$750</div>
-          <p class="text-gray-400 text-sm mb-6">one-time</p>
-          <ul class="text-sm text-gray-600 space-y-3 mb-8">
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Everything in Starter</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Up to 15 pages</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> AI chatbot integration</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Analytics dashboard</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 5 revision rounds</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 30-day support</li>
+        <div class="pricing-card featured reveal" style="transition-delay:100ms">
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">$49<span>/mo</span></div>
+          <div class="plan-desc">For growing teams</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Unlimited agents</li>
+            <li><span class="check">✓</span> 50,000 tasks/mo</li>
+            <li><span class="check">✓</span> Priority support</li>
+            <li><span class="check">✓</span> Advanced analytics</li>
+            <li><span class="check">✓</span> Evolver engine</li>
+            <li><span class="check">✓</span> Custom integrations</li>
           </ul>
-          <a href="#contact" class="btn btn-primary w-full justify-center">Get Started</a>
+          <a href="#cta" class="btn btn-primary">Start Free Trial</a>
         </div>
-        <!-- Enterprise -->
-        <div class="card">
-          <h3 class="text-lg font-semibold mb-1">Enterprise</h3>
-          <p class="text-gray-500 text-sm mb-4">Custom solutions</p>
-          <div class="text-4xl font-light tracking-tight mb-1">Custom</div>
-          <p class="text-gray-400 text-sm mb-6">tailored to you</p>
-          <ul class="text-sm text-gray-600 space-y-3 mb-8">
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Everything in Professional</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Unlimited pages</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Custom AI automation</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> API integrations</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Priority support</li>
-            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 90-day support</li>
+        <div class="pricing-card reveal" style="transition-delay:200ms">
+          <div class="plan-name">Enterprise</div>
+          <div class="plan-price">Custom</div>
+          <div class="plan-desc">For large organizations</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Everything in Pro</li>
+            <li><span class="check">✓</span> Unlimited tasks</li>
+            <li><span class="check">✓</span> Dedicated support</li>
+            <li><span class="check">✓</span> SLA guarantee</li>
+            <li><span class="check">✓</span> On-premise option</li>
+            <li><span class="check">✓</span> Custom training</li>
           </ul>
-          <a href="#contact" class="btn btn-secondary w-full justify-center">Contact Us</a>
+          <a href="#cta" class="btn btn-ghost">Contact Sales</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="py-20 md:py-28">
-    <div class="wrap">
-      <div class="text-center mb-16">
-        <p class="text-purple-600 font-medium text-sm uppercase tracking-wider mb-3">Testimonials</p>
-        <h2 class="text-3xl md:text-4xl font-light tracking-tight">What our clients say</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-3">
-        <div class="card">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="text-yellow-400">★★★★★</span>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">"SyncSphere built our entire website in 48 hours. The quality was beyond what we expected — it looks like a $50k site. Our conversions doubled in the first month."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-semibold text-sm">JM</div>
-            <div><div class="font-medium text-sm">James McKeever</div><div class="text-gray-400 text-xs">CEO, McKeever & Associates</div></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="text-yellow-400">★★★★★</span>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">"The AI chatbot they built handles 80% of our customer inquiries automatically. It's like having a full-time support team at a fraction of the cost. Absolutely game-changing."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-semibold text-sm">SN</div>
-            <div><div class="font-medium text-sm">Sarah Nakato</div><div class="text-gray-400 text-xs">Founder, AgriPulse Uganda</div></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="flex items-center gap-1 mb-4">
-            <span class="text-yellow-400">★★★★★</span>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">"We went from no online presence to a fully automated business in one week. Lead capture, invoicing, customer follow-up — all handled by AI. Incredible value."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold text-sm">DK</div>
-            <div><div class="font-medium text-sm">David Kimani</div><div class="text-gray-400 text-xs">Owner, NexusFlow AI</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="py-20 md:py-28 section-alt">
-    <div class="wrap max-w-3xl">
-      <div class="text-center mb-16">
-        <p class="text-purple-600 font-medium text-sm uppercase tracking-wider mb-3">FAQ</p>
-        <h2 class="text-3xl md:text-4xl font-light tracking-tight">Frequently asked questions</h2>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">How fast can you deliver? <span class="text-gray-400">+</span></div>
-        <div class="faq-a">Most projects are completed within 48-72 hours. Complex enterprise solutions may take up to a week. We'll provide a clear timeline before we start.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">What if I need changes after delivery? <span class="text-gray-400">+</span></div>
-        <div class="faq-a">Each plan includes revision rounds (2 for Starter, 5 for Professional, unlimited for Enterprise). Additional revisions are available at $50/hour.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">Do you offer ongoing maintenance? <span class="text-gray-400">+</span></div>
-        <div class="faq-a">Yes! Professional and Enterprise plans include 30-90 days of support. We also offer monthly maintenance plans starting at $99/month for updates, backups, and monitoring.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">What payment methods do you accept? <span class="text-gray-400">+</span></div>
-        <div class="faq-a">We accept PayPal, bank transfer, and all major credit cards. Payment is typically 50% upfront and 50% on delivery.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">Is there a money-back guarantee? <span class="text-gray-400">+</span></div>
-        <div class="faq-a">Absolutely. If you're not satisfied with the final deliverable, we offer a full refund within 14 days of delivery. No questions asked.</div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section id="contact" class="py-20 md:py-28 bg-purple-600 text-white text-center">
-    <div class="wrap">
-      <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-4">Ready to grow your business online?</h2>
-      <p class="text-purple-200 max-w-xl mx-auto mb-8">Let's build something great together. Get a free consultation and project estimate.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="mailto:hello@syncsphere.ai" class="btn btn-white !text-purple-600">hello@syncsphere.ai</a>
-        <a href="#pricing" class="btn !bg-purple-700 !text-white hover:!bg-purple-800">View Pricing</a>
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <div class="cta-box reveal-scale">
+        <h2>Ready to build with AI agents?</h2>
+        <p>Join the waitlist and get early access with lifetime founding member pricing.</p>
+        <a href="mailto:hello@syncsphere.ai" class="btn btn-primary">
+          Get Early Access
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="py-8 border-t border-gray-100">
-    <div class="wrap flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded bg-purple-600 flex items-center justify-center text-white font-bold text-xs">S</div>
-        <span class="font-medium text-sm">SyncSphere</span>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <svg viewBox="0 0 400 400" width="28" height="28">
+              <defs>
+                <linearGradient id="footSphere" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#061b31"/>
+                  <stop offset="100%" style="stop-color:#533afd"/>
+                </linearGradient>
+              </defs>
+              <circle cx="200" cy="200" r="160" fill="url(#footSphere)"/>
+              <ellipse cx="200" cy="200" rx="155" ry="55" fill="none" stroke="rgba(83,58,253,0.4)" stroke-width="2.5" transform="rotate(-20,200,200)"/>
+              <text x="200" y="215" font-family="system-ui,sans-serif" font-size="72" font-weight="300" fill="#fff" text-anchor="middle" letter-spacing="-2">S</text>
+            </svg>
+            <span>SyncSphere</span>
+          </a>
+          <p>AI agents that evolve with your business. Built for teams who refuse to stand still.</p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="flex gap-6 text-sm text-gray-400">
-        <a href="#features" class="hover:text-purple-600 transition">Features</a>
-        <a href="#pricing" class="hover:text-purple-600 transition">Pricing</a>
-        <a href="#testimonials" class="hover:text-purple-600 transition">Testimonials</a>
-        <a href="#faq" class="hover:text-purple-600 transition">FAQ</a>
+      <div class="footer-bottom">
+        <p>© 2026 SyncSphere. All rights reserved.</p>
+        <p>Built with 🧬 by the SyncSphere team</p>
       </div>
-      <p class="text-xs text-gray-400">© 2026 SyncSphere. All rights reserved.</p>
     </div>
   </footer>
 
+  <script>
+    // ========================================
+    // SCROLL REVEAL
+    // ========================================
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ========================================
+    // NAVIGATION SCROLL EFFECT
+    // ========================================
+    const nav = document.getElementById('nav');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      lastScroll = currentScroll;
+    }, { passive: true });
+
+    // ========================================
+    // MOBILE NAV TOGGLE
+    // ========================================
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ========================================
+    // PARALLAX ORBS
+    // ========================================
+    const orbs = document.querySelectorAll('.orb');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      orbs.forEach((orb, i) => {
+        const speed = (i + 1) * 0.15;
+        orb.style.transform = `translateY(${scrollY * speed}px)`;
+      });
+    }, { passive: true });
+
+    // ========================================
+    // SMOOTH SCROLL FOR ANCHOR LINKS
+    // ========================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ========================================
+    // TILT EFFECT ON FEATURE CARDS
+    // ========================================
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // ========================================
+    // COUNTER ANIMATION
+    // ========================================
+    function animateCounter(el, target, duration) {
+      let start = 0;
+      const increment = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          el.textContent = target.toLocaleString() + '+';
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(start).toLocaleString() + '+';
+        }
+      }, 16);
+    }
+  </script>
 </body>
 </html>
