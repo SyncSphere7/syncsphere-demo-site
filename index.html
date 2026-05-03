@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SyncSphere — AI-Powered Business Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            purple: { 50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd', 400: '#a78bfa', 500: '#8b5cf6', 600: '#533afd', 700: '#4434d4', 800: '#2e2b8c', 900: '#1c1e54' },
+            navy: { 900: '#061b31', 975: '#0d253d' },
+            ruby: '#ea2261',
+            magenta: '#f96bee',
+          },
+          fontFamily: { sans: ['-apple-system', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #061b31; --muted: #64748d; --border: #e5edf5; --accent: #533afd; --surface: #ffffff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+    h1, h2, h3 { letter-spacing: -0.02em; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-weight: 500; font-size: 15px; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+    .btn-primary { background: #533afd; color: white; }
+    .btn-primary:hover { background: #4434d4; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(83,58,253,0.3); }
+    .btn-secondary { background: transparent; color: #061b31; border: 1px solid #e5edf5; }
+    .btn-secondary:hover { border-color: #533afd; color: #533afd; }
+    .btn-white { background: white; color: #533afd; }
+    .card { background: white; border: 1px solid #e5edf5; border-radius: 14px; padding: 32px; transition: all 0.3s; }
+    .card:hover { box-shadow: 0 8px 30px rgba(50,50,93,0.08); transform: translateY(-2px); }
+    .card.featured { border-color: #533afd; position: relative; }
+    .card.featured::before { content: 'Recommended'; position: absolute; top: -12px; left: 24px; background: #533afd; color: white; padding: 3px 12px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+    .gradient-text { background: linear-gradient(135deg, #533afd, #f96bee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-bg { background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); }
+    .section-alt { background: #f8f9fc; }
+    .faq-item { border-bottom: 1px solid #e5edf5; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { cursor: pointer; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-weight: 500; }
+    .faq-a { padding: 0 0 20px; color: #64748d; display: none; }
+    .faq-a.open { display: block; }
+    @media (max-width: 800px) {
+      .wrap { padding: 0 20px; }
+      .hero h1 { font-size: 36px !important; }
+      .grid-3 { grid-template-columns: 1fr !important; }
+      .grid-2 { grid-template-columns: 1fr !important; }
+    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate { animation: fadeInUp 0.6s ease-out forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="wrap">
+    <header class="flex justify-between items-center py-5">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white font-bold text-sm">S</div>
+        <span class="font-semibold text-lg tracking-tight">SyncSphere</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#features" class="text-gray-600 hover:text-purple-600 transition">Features</a>
+        <a href="#pricing" class="text-gray-600 hover:text-purple-600 transition">Pricing</a>
+        <a href="#testimonials" class="text-gray-600 hover:text-purple-600 transition">Testimonials</a>
+        <a href="#faq" class="text-gray-600 hover:text-purple-600 transition">FAQ</a>
+        <a href="#contact" class="btn btn-primary text-sm !py-2 !px-4">Get Started</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-bg py-20 md:py-28">
+    <div class="wrap text-center">
+      <div class="inline-flex items-center gap-2 bg-purple-50 border border-purple-200 rounded-full px-4 py-1.5 text-sm text-purple-700 mb-6 animate">
+        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+        Now accepting new clients
+      </div>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight max-w-3xl mx-auto mb-6 animate delay-1" style="line-height: 1.05;">
+        AI-powered websites & automation for <span class="gradient-text font-medium">growing businesses</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 animate delay-2">
+        We build premium websites, AI chatbots, and business automation — delivered by an autonomous AI agent team. No agencies. No delays. Just results.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate delay-3">
+        <a href="#pricing" class="btn btn-primary text-base !py-3 !px-8">View Pricing</a>
+        <a href="#features" class="btn btn-secondary text-base !py-3 !px-8">See What We Build</a>
+      </div>
+      <div class="mt-12 flex items-center justify-center gap-8 text-sm text-gray-400">
+        <span>✓ No contracts</span>
+        <span>✓ 48hr delivery</span>
+        <span>✓ Money-back guarantee</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="py-12 border-y border-gray-100">
+    <div class="wrap text-center">
+      <p class="text-xs uppercase tracking-widest text-gray-400 mb-6">Trusted by businesses worldwide</p>
+      <div class="flex flex-wrap justify-center gap-8 md:gap-12 text-gray-300 font-semibold text-lg">
+        <span>Stripe</span><span>Linear</span><span>Vercel</span><span>Cursor</span><span>Notion</span><span>Supabase</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="py-20 md:py-28">
+    <div class="wrap">
+      <div class="text-center mb-16">
+        <p class="text-purple-600 font-medium text-sm uppercase tracking-wider mb-3">What We Build</p>
+        <h2 class="text-3xl md:text-4xl font-light tracking-tight">Everything your business needs online</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-3">
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Premium Websites</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">$100k-agency quality sites built with modern design systems. Responsive, fast, and conversion-optimized.</p>
+        </div>
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">AI Chatbots</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Intelligent customer support bots that handle inquiries 24/7. Trained on your business data and brand voice.</p>
+        </div>
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Business Automation</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Streamline workflows with custom automation. From lead capture to invoicing — let AI handle the repetitive work.</p>
+        </div>
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">SEO & Analytics</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Built-in search optimization and analytics dashboard. Track visitors, conversions, and ROI in real-time.</p>
+        </div>
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Secure & Reliable</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Enterprise-grade security with SSL, backups, and 99.9% uptime. Your data is safe and always accessible.</p>
+        </div>
+        <div class="card">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Dedicated Support</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Direct access to our team. Quick responses, iterative revisions, and ongoing maintenance included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-20 md:py-28 section-alt">
+    <div class="wrap">
+      <div class="text-center mb-16">
+        <p class="text-purple-600 font-medium text-sm uppercase tracking-wider mb-3">Pricing</p>
+        <h2 class="text-3xl md:text-4xl font-light tracking-tight">Simple, transparent pricing</h2>
+        <p class="text-gray-500 mt-3">No hidden fees. Cancel anytime.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-3 max-w-5xl mx-auto">
+        <!-- Starter -->
+        <div class="card">
+          <h3 class="text-lg font-semibold mb-1">Starter</h3>
+          <p class="text-gray-500 text-sm mb-4">Perfect for new businesses</p>
+          <div class="text-4xl font-light tracking-tight mb-1">$250</div>
+          <p class="text-gray-400 text-sm mb-6">one-time</p>
+          <ul class="text-sm text-gray-600 space-y-3 mb-8">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 5-page responsive website</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Mobile-optimized design</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Basic SEO setup</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Contact form integration</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 2 revision rounds</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary w-full justify-center">Get Started</a>
+        </div>
+        <!-- Professional -->
+        <div class="card featured">
+          <h3 class="text-lg font-semibold mb-1">Professional</h3>
+          <p class="text-gray-500 text-sm mb-4">For growing businesses</p>
+          <div class="text-4xl font-light tracking-tight mb-1">$750</div>
+          <p class="text-gray-400 text-sm mb-6">one-time</p>
+          <ul class="text-sm text-gray-600 space-y-3 mb-8">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Everything in Starter</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Up to 15 pages</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> AI chatbot integration</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Analytics dashboard</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 5 revision rounds</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 30-day support</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary w-full justify-center">Get Started</a>
+        </div>
+        <!-- Enterprise -->
+        <div class="card">
+          <h3 class="text-lg font-semibold mb-1">Enterprise</h3>
+          <p class="text-gray-500 text-sm mb-4">Custom solutions</p>
+          <div class="text-4xl font-light tracking-tight mb-1">Custom</div>
+          <p class="text-gray-400 text-sm mb-6">tailored to you</p>
+          <ul class="text-sm text-gray-600 space-y-3 mb-8">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Everything in Professional</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Unlimited pages</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Custom AI automation</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> API integrations</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Priority support</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 90-day support</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary w-full justify-center">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="py-20 md:py-28">
+    <div class="wrap">
+      <div class="text-center mb-16">
+        <p class="text-purple-600 font-medium text-sm uppercase tracking-wider mb-3">Testimonials</p>
+        <h2 class="text-3xl md:text-4xl font-light tracking-tight">What our clients say</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 grid-3">
+        <div class="card">
+          <div class="flex items-center gap-1 mb-4">
+            <span class="text-yellow-400">★★★★★</span>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"SyncSphere built our entire website in 48 hours. The quality was beyond what we expected — it looks like a $50k site. Our conversions doubled in the first month."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-semibold text-sm">JM</div>
+            <div><div class="font-medium text-sm">James McKeever</div><div class="text-gray-400 text-xs">CEO, McKeever & Associates</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="flex items-center gap-1 mb-4">
+            <span class="text-yellow-400">★★★★★</span>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"The AI chatbot they built handles 80% of our customer inquiries automatically. It's like having a full-time support team at a fraction of the cost. Absolutely game-changing."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-semibold text-sm">SN</div>
+            <div><div class="font-medium text-sm">Sarah Nakato</div><div class="text-gray-400 text-xs">Founder, AgriPulse Uganda</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="flex items-center gap-1 mb-4">
+            <span class="text-yellow-400">★★★★★</span>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">"We went from no online presence to a fully automated business in one week. Lead capture, invoicing, customer follow-up — all handled by AI. Incredible value."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold text-sm">DK</div>
+            <div><div class="font-medium text-sm">David Kimani</div><div class="text-gray-400 text-xs">Owner, NexusFlow AI</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 md:py-28 section-alt">
+    <div class="wrap max-w-3xl">
+      <div class="text-center mb-16">
+        <p class="text-purple-600 font-medium text-sm uppercase tracking-wider mb-3">FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-light tracking-tight">Frequently asked questions</h2>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">How fast can you deliver? <span class="text-gray-400">+</span></div>
+        <div class="faq-a">Most projects are completed within 48-72 hours. Complex enterprise solutions may take up to a week. We'll provide a clear timeline before we start.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">What if I need changes after delivery? <span class="text-gray-400">+</span></div>
+        <div class="faq-a">Each plan includes revision rounds (2 for Starter, 5 for Professional, unlimited for Enterprise). Additional revisions are available at $50/hour.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">Do you offer ongoing maintenance? <span class="text-gray-400">+</span></div>
+        <div class="faq-a">Yes! Professional and Enterprise plans include 30-90 days of support. We also offer monthly maintenance plans starting at $99/month for updates, backups, and monitoring.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">What payment methods do you accept? <span class="text-gray-400">+</span></div>
+        <div class="faq-a">We accept PayPal, bank transfer, and all major credit cards. Payment is typically 50% upfront and 50% on delivery.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">Is there a money-back guarantee? <span class="text-gray-400">+</span></div>
+        <div class="faq-a">Absolutely. If you're not satisfied with the final deliverable, we offer a full refund within 14 days of delivery. No questions asked.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="py-20 md:py-28 bg-purple-600 text-white text-center">
+    <div class="wrap">
+      <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-4">Ready to grow your business online?</h2>
+      <p class="text-purple-200 max-w-xl mx-auto mb-8">Let's build something great together. Get a free consultation and project estimate.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:hello@syncsphere.ai" class="btn btn-white !text-purple-600">hello@syncsphere.ai</a>
+        <a href="#pricing" class="btn !bg-purple-700 !text-white hover:!bg-purple-800">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t border-gray-100">
+    <div class="wrap flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-purple-600 flex items-center justify-center text-white font-bold text-xs">S</div>
+        <span class="font-medium text-sm">SyncSphere</span>
+      </div>
+      <div class="flex gap-6 text-sm text-gray-400">
+        <a href="#features" class="hover:text-purple-600 transition">Features</a>
+        <a href="#pricing" class="hover:text-purple-600 transition">Pricing</a>
+        <a href="#testimonials" class="hover:text-purple-600 transition">Testimonials</a>
+        <a href="#faq" class="hover:text-purple-600 transition">FAQ</a>
+      </div>
+      <p class="text-xs text-gray-400">© 2026 SyncSphere. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
