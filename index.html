@@ -608,7 +608,23 @@
       font-size: 24px;
     }
 
-    .feature-card h3 {
+    .hero-visual img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-elevated);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px 6px 0 0;
+      margin: -32px -32px 20px -32px;
+      width: calc(100% + 64px);
+    }
       font-size: 22px;
       font-weight: 300;
       line-height: 1.10;
@@ -1137,14 +1153,9 @@
         </div>
       </div>
 
-      <!-- 3D Orbit Visual -->
+      <!-- Hero Dashboard Image -->
       <div class="hero-visual reveal-scale">
-        <div class="orbit-container">
-          <div class="orbit-ring"></div>
-          <div class="orbit-ring"></div>
-          <div class="orbit-ring"></div>
-          <div class="orbit-center"></div>
-        </div>
+        <img src="assets/hero-dashboard.png" alt="SyncSphere Dashboard" loading="lazy">
       </div>
     </div>
   </section>
@@ -1174,44 +1185,32 @@
       </div>
       <div class="features-grid stagger">
         <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+          <img src="assets/feature-agents.png" alt="Multi-Agent Orchestration" loading="lazy">
           <h3>Multi-Agent Orchestration</h3>
           <p>Deploy specialized AI agents that collaborate autonomously — each with its own role, memory, and skill set.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 11-6.219-8.56" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+          <img src="assets/feature-ai.png" alt="Self-Evolving Intelligence" loading="lazy">
           <h3>Self-Evolving Intelligence</h3>
           <p>Agents learn from every interaction. Evolver-powered genes encode experience into reusable intelligence.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#533afd" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#533afd" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
+          <img src="assets/feature-collab.png" alt="Real-Time Collaboration" loading="lazy">
           <h3>Real-Time Collaboration</h3>
           <p>Watch agents work together in real-time. Shared context, parallel execution, instant handoffs.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+          <img src="assets/feature-security.png" alt="Enterprise Security" loading="lazy">
           <h3>Enterprise Security</h3>
           <p>End-to-end encryption, audit trails, role-based access. Your data stays yours — always.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+          <img src="assets/feature-speed.png" alt="Lightning Fast" loading="lazy">
           <h3>Lightning Fast</h3>
           <p>Sub-second agent response times. Parallel execution across dozens of agents simultaneously.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="#533afd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+          <img src="assets/feature-fullstack.png" alt="Full-Stack Toolkit" loading="lazy">
           <h3>Full-Stack Toolkit</h3>
           <p>Code generation, design, marketing, finance — specialized agents for every function in your business.</p>
         </div>
