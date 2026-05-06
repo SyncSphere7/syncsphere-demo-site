@@ -97,7 +97,21 @@
       <a href="#contact" class="hover:text-teal-600">Contact</a>
       <a href="tel:4165550142" class="bg-teal-600 text-white px-5 py-2 rounded-full hover:bg-teal-700">(416) 555-0142</a>
     </div>
-    <a href="tel:4165550142" class="md:hidden bg-teal-600 text-white px-4 py-2 rounded-full text-sm">Call Now</a>
+    <!-- Mobile hamburger button -->
+    <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle menu">
+      <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <!-- Mobile menu (hidden by default) -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 mt-2 pt-4 pb-2">
+    <div class="flex flex-col gap-3 text-sm font-medium text-gray-600">
+      <a href="#home" class="hover:text-teal-600 py-2">Home</a>
+      <a href="#about" class="hover:text-teal-600 py-2">About</a>
+      <a href="#services" class="hover:text-teal-600 py-2">Services</a>
+      <a href="#reviews" class="hover:text-teal-600 py-2">Reviews</a>
+      <a href="#contact" class="hover:text-teal-600 py-2">Contact</a>
+      <a href="tel:4165550142" class="bg-teal-600 text-white px-4 py-3 rounded-full text-center font-semibold mt-2">Call (416) 555-0142</a>
+    </div>
   </div>
 </nav>
 
@@ -172,7 +186,7 @@
       <span class="text-teal-600 font-semibold text-sm">ABOUT US</span>
       <h2 class="text-3xl font-bold mt-2 mb-6">Meet Dr. Megan O'Brien</h2>
       <p class="text-gray-600 mb-4">Dr. Megan O'Brien graduated from the University of Toronto Faculty of Dentistry in 2012 and has been serving the Bloor West Village community for over 12 years. She believes every patient deserves gentle, thorough care in a comfortable environment.</p>
-      <p class="text-gray-600 mb-6">Her approach focuses on preventive education and making dentistry accessible for families. From a child's first dental visit to cosmetic work for adults, Dr. Chen and our team are here for every stage of your family's dental health.</p>
+      <p class="text-gray-600 mb-6">Her approach focuses on preventive education and making dentistry accessible for families. From a child's first dental visit to cosmetic work for adults, Dr. O'Brien and our team are here for every stage of your family's dental health.</p>
       <div class="grid grid-cols-2 gap-4 text-sm">
         <div class="bg-gray-50 rounded-xl p-4"><span class="font-bold text-gray-900">University of Toronto</span><p class="text-gray-500">Faculty of Dentistry, 2012</p></div>
         <div class="bg-gray-50 rounded-xl p-4"><span class="font-bold text-gray-900">12+ Years</span><p class="text-gray-500">Serving Bloor West Village</p></div>
@@ -247,7 +261,7 @@
           <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         </div>
-        <p class="text-sm mb-4">"The team at Bloor West Dental made me feel at ease from the moment I walked in. Dr. Chen explained everything clearly and my kids actually look forward to their checkups now. We've been going here for 3 years."</p>
+        <p class="text-sm mb-4">"The team at Bloor West Dental made me feel at ease from the moment I walked in. Dr. O'Brien explained everything clearly and my kids actually look forward to their checkups now. We've been going here for 3 years."</p>
         <p class="font-semibold text-sm">— Rachel Mitchell</p>
         <p class="text-teal-200 text-xs mt-1">Bloor West Village · March 2026</p>
       </div>
@@ -259,7 +273,7 @@
           <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         </div>
-        <p class="text-sm mb-4">"I needed an emergency root canal on a Saturday and they fit me in within 2 hours. Dr. Chen was incredibly gentle and the whole experience was far less painful than I expected. Highly recommend this practice."</p>
+        <p class="text-sm mb-4">"I needed an emergency root canal on a Saturday and they fit me in within 2 hours. Dr. O'Brien was incredibly gentle and the whole experience was far less painful than I expected. Highly recommend this practice."</p>
         <p class="font-semibold text-sm">— Daniel Ferreira</p>
         <p class="text-teal-200 text-xs mt-1">The Junction · January 2026</p>
       </div>
@@ -271,7 +285,7 @@
           <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         </div>
-        <p class="text-sm mb-4">"Dr. Chen whitened my teeth for my daughter's wedding and the results were stunning. She took the time to explain every step and never made me feel rushed. The whole team is warm and professional."</p>
+        <p class="text-sm mb-4">"Dr. O'Brien whitened my teeth for my daughter's wedding and the results were stunning. She took the time to explain every step and never made me feel rushed. The whole team is warm and professional."</p>
         <p class="font-semibold text-sm">— Priya Sharma</p>
         <p class="text-teal-200 text-xs mt-1">Roncesvalles · February 2026</p>
       </div>
@@ -297,21 +311,21 @@
       "author": {"@type": "Person", "name": "Rachel Mitchell"},
       "datePublished": "2026-03-15",
       "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "reviewBody": "The team at Bloor West Dental made me feel at ease from the moment I walked in. Dr. Chen explained everything clearly and my kids actually look forward to their checkups now."
+      "reviewBody": "The team at Bloor West Dental made me feel at ease from the moment I walked in. Dr. O'Brien explained everything clearly and my kids actually look forward to their checkups now."
     },
     {
       "@type": "Review",
       "author": {"@type": "Person", "name": "Daniel Ferreira"},
       "datePublished": "2026-01-22",
       "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "reviewBody": "I needed an emergency root canal on a Saturday and they fit me in within 2 hours. Dr. Chen was incredibly gentle and the whole experience was far less painful than I expected."
+      "reviewBody": "I needed an emergency root canal on a Saturday and they fit me in within 2 hours. Dr. O'Brien was incredibly gentle and the whole experience was far less painful than I expected."
     },
     {
       "@type": "Review",
       "author": {"@type": "Person", "name": "Priya Sharma"},
       "datePublished": "2026-02-08",
       "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "reviewBody": "Dr. Chen whitened my teeth for my daughter's wedding and the results were stunning. She took the time to explain every step and never made me feel rushed."
+      "reviewBody": "Dr. O'Brien whitened my teeth for my daughter's wedding and the results were stunning. She took the time to explain every step and never made me feel rushed."
     }
   ]
 }
@@ -376,7 +390,7 @@
       <h4 class="font-semibold text-white mb-4">Quick Links</h4>
       <ul class="space-y-2 text-sm">
         <li><a href="#home" class="hover:text-teal-400">Home</a></li>
-        <li><a href="#about" class="hover:text-teal-400">About Dr. Chen</a></li>
+        <li><a href="#about" class="hover:text-teal-400">About Dr. O'Brien</a></li>
         <li><a href="#services" class="hover:text-teal-400">Services</a></li>
         <li><a href="#reviews" class="hover:text-teal-400">Reviews</a></li>
         <li><a href="#contact" class="hover:text-teal-400">Contact</a></li>
@@ -396,5 +410,12 @@
   </div>
 </footer>
 
+
+<script>
+document.getElementById('menu-toggle').addEventListener('click', function() {
+  var menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('hidden');
+});
+</script>
 </body>
 </html>
