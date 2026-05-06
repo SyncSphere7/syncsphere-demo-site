@@ -80,7 +80,7 @@
 
 <!-- NAV -->
 <nav class="bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <div class="flex items-center gap-2">
       <img src="https://raw.githubusercontent.com/SyncSphere7/syncsphere-demo-site/main/bloor-west-dental/images/logo.jpg" alt="Bloor West Dental logo" class="w-10 h-10 rounded-full object-cover">
       <div>
@@ -98,12 +98,13 @@
     </div>
     <!-- Mobile hamburger button -->
     <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle menu">
-      <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="menu-icon-open" class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="menu-icon-close" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
   <!-- Mobile menu (hidden by default) -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 mt-2 pt-4 pb-2">
-    <div class="flex flex-col gap-3 text-sm font-medium text-gray-600">
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 mt-2 pt-4 pb-4 px-4">
+    <div class="flex flex-col gap-1 text-sm font-medium text-gray-600">
       <a href="#home" class="hover:text-teal-600 py-2">Home</a>
       <a href="#about" class="hover:text-teal-600 py-2">About</a>
       <a href="#services" class="hover:text-teal-600 py-2">Services</a>
